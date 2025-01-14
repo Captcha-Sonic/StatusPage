@@ -19,6 +19,18 @@ const workerConfig = {
   monitors: [
     // Example HTTP Monitor
     {
+      id: 'foo_monitor',
+      name: 'My API Monitor',
+      method: 'GET',
+      target: 'https://www.google.com'
+    },
+    {
+      id: 'test_tcp_monitor',
+      name: 'Example TCP Monitor',
+      method: 'TCP_PING',
+      target: '1.1.1.1:22'
+    },
+    {
       id: 'solver_api',
       name: 'solver_api',
       method: 'POST',
@@ -26,10 +38,9 @@ const workerConfig = {
       tooltip: 'This is main SolutionsAPI of captchasonic service',
       statusPageLink: 'https://my.captchasonic.com',
       expectedCodes: [200],
-      timeout: 10000,
+      timeout: 20000,
       headers: {
-        'User-Agent': 'Uptimeflare',
-        Authorization: 'Bearer YOUR_TOKEN_HERE',
+        'content-type:': 'application/json',
       },
       body: {
         "apiKey": "${{ secrets.APIKEY }}",
@@ -54,10 +65,13 @@ const workerConfig = {
       name: 'demo',
       method: 'GET',
       target: 'https://swapi.py4e.com/api/people/?page=2',
-      tooltip: 'This is main SolutionsAPI of captchasonic service',
-      statusPageLink: 'https://my.captchasonic.com',
+      headers: {
+        'content-type:': 'application/json',
+      },
+      tooltip: 'demo',
+      statusPageLink: 'https://swapi.py4e.com/api/people/?page=2',
       expectedCodes: [200],
-      timeout: 10000,
+      timeout: 20000,
       // responseKeyword: 'success',
     },
   ],
