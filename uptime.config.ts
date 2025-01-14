@@ -17,6 +17,8 @@ const workerConfig = {
   // passwordProtection: 'username:password',
   // Define all your monitors here
   monitors: [
+
+
     // Example HTTP Monitor
     {
       id: 'solver_api',
@@ -48,6 +50,17 @@ const workerConfig = {
       },
       responseKeyword: 'success',
       // checkLocationWorkerRoute: 'https://xxx.example.com',
+    },
+    {
+      id: 'demo',
+      name: 'demo',
+      method: 'GET',
+      target: 'https://swapi.py4e.com/api/people/?page=2',
+      tooltip: 'This is main SolutionsAPI of captchasonic service',
+      statusPageLink: 'https://my.captchasonic.com',
+      expectedCodes: [200],
+      timeout: 10000,
+      responseKeyword: 'success',
     },
   ],
   // notification: {
