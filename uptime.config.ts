@@ -17,14 +17,25 @@ const workerConfig = {
   // passwordProtection: 'username:password',
   // Define all your monitors here
   monitors: [
-    // Example HTTP Monitor
+    {
+      id: 'captchasonic balance',
+      name: 'balance API',
+      method: 'GET',
+      target: 'https://api.captchasonic.com/balance?apiKey=sonic_c33ee86ac0d7296fe95b723a65b11ab7',
+      tooltip: 'This is a tooltip for this monitor',
+      statusPageLink: 'https://my.captchasonic.com',
+      expectedCodes: [200, 400],
+      timeout: 20000,
+      checkLocationWorkerRoute : "https://br.status.captchasonic.com"
+    },
     {
       id: 'solver_api',
       name: 'solver_api',
       method: 'POST',
       target: 'https://api.captchasonic.com/createTask',
-      tooltip: 'Main Task = Solutions API of CaptchaSonic Service',
+      tooltip: 'Main Solutions API of CaptchaSonic Service',
       statusPageLink: 'https://api.captchasonic.com/createTask',
+      expectedCodes: [200, 400],
       timeout: 20000,
       body: {
         "apiKey": "statuspage",
@@ -33,6 +44,7 @@ const workerConfig = {
           "queries": []
           }
       },
+      checkLocationWorkerRoute : "https://br.status.captchasonic.com"
     },
     {
       id: 'demo',
@@ -43,6 +55,7 @@ const workerConfig = {
       statusPageLink: 'https://swapi.py4e.com/api/people/?page=2',
       expectedCodes: [200],
       timeout: 20000,
+      checkLocationWorkerRoute : "https://br.status.captchasonic.com"
     },
   ],
   // notification: {
