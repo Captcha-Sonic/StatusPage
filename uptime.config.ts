@@ -19,60 +19,30 @@ const workerConfig = {
   monitors: [
     // Example HTTP Monitor
     {
-      id: 'foo_monitor',
-      name: 'My API Monitor',
-      method: 'GET',
-      target: 'https://www.google.com'
-    },
-    {
-      id: 'test_tcp_monitor',
-      name: 'Example TCP Monitor',
-      method: 'TCP_PING',
-      target: '1.1.1.1:22'
-    },
-    {
       id: 'solver_api',
       name: 'solver_api',
       method: 'POST',
       target: 'https://api.captchasonic.com/createTask',
-      tooltip: 'This is main SolutionsAPI of captchasonic service',
-      statusPageLink: 'https://my.captchasonic.com',
-      expectedCodes: [200],
+      tooltip: 'Main Task = Solutions API of CaptchaSonic Service',
+      statusPageLink: 'https://api.captchasonic.com/createTask',
       timeout: 20000,
-      headers: {
-        'content-type:': 'application/json',
-      },
       body: {
-        "apiKey": "${{ secrets.APIKEY }}",
+        "apiKey": "statuspage",
         "task": {
-          "type": "OcrImage",
-          "screenshot": true,
-          "queries": [
-            "image1_base64",
-            "image2_base64"
-          ],
-          "numeric": true,
-          "module": "bls",
-          "case": false,
-          "maxLength": 3
-        }
+          "type": "statuspage",
+          "queries": []
+          }
       },
-      // responseKeyword: 'success',
-      // checkLocationWorkerRoute: 'https://xxx.example.com',
     },
     {
       id: 'demo',
       name: 'demo',
       method: 'GET',
       target: 'https://swapi.py4e.com/api/people/?page=2',
-      headers: {
-        'content-type:': 'application/json',
-      },
       tooltip: 'demo',
       statusPageLink: 'https://swapi.py4e.com/api/people/?page=2',
       expectedCodes: [200],
       timeout: 20000,
-      // responseKeyword: 'success',
     },
   ],
   // notification: {
