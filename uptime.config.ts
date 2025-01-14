@@ -18,8 +18,8 @@ const workerConfig = {
   // Define all your monitors here
   monitors: [
     {
-      id: 'captchasonic balance',
-      name: 'balance API',
+      id: 'balance_api',
+      name: 'balance_api',
       method: 'GET',
       target: 'https://api.captchasonic.com/balance?apiKey=sonic_c33ee86ac0d7296fe95b723a65b11ab7',
       tooltip: 'This is a tooltip for this monitor',
