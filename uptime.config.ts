@@ -22,7 +22,7 @@ const workerConfig = {
       id: 'solver_api',
       name: 'solver_api',
       method: 'POST',
-      target: 'https://api.captchasonic.com',
+      target: 'https://api.captchasonic.com/createTask',
       tooltip: 'This is main SolutionsAPI of captchasonic service',
       statusPageLink: 'https://my.captchasonic.com',
       expectedCodes: [200],
@@ -31,7 +31,21 @@ const workerConfig = {
         'User-Agent': 'Uptimeflare',
         Authorization: 'Bearer YOUR_TOKEN_HERE',
       },
-      body: 'Hello, world!',
+      body: {
+        "apiKey": "${{ secrets.APIKEY }}",
+        "task": {
+          "type": "OcrImage",
+          "screenshot": true,
+          "queries": [
+            "image1_base64",
+            "image2_base64"
+          ],
+          "numeric": true,
+          "module": "bls",
+          "case": false,
+          "maxLength": 3
+        }
+      },
       responseKeyword: 'success',
       // checkLocationWorkerRoute: 'https://xxx.example.com',
     },
