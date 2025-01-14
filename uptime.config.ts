@@ -17,8 +17,6 @@ const workerConfig = {
   // passwordProtection: 'username:password',
   // Define all your monitors here
   monitors: [
-
-
     // Example HTTP Monitor
     {
       id: 'solver_api',
@@ -48,7 +46,7 @@ const workerConfig = {
           "maxLength": 3
         }
       },
-      responseKeyword: 'success',
+      // responseKeyword: 'success',
       // checkLocationWorkerRoute: 'https://xxx.example.com',
     },
     {
@@ -60,7 +58,7 @@ const workerConfig = {
       statusPageLink: 'https://my.captchasonic.com',
       expectedCodes: [200],
       timeout: 10000,
-      responseKeyword: 'success',
+      // responseKeyword: 'success',
     },
   ],
   // notification: {
