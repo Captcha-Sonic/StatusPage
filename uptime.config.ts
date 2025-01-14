@@ -1,6 +1,5 @@
 const pageConfig = {
-  // Title for your status page
-  title: "lyc8503's Status Page",
+  title: "CaptchaSonic's Status Page",
   // Links shown at the header of your status page, could set `highlight` to `true`
   links: [
     { link: 'https://my.captchasonic.com', label: 'Dashboard' },
@@ -14,8 +13,6 @@ const workerConfig = {
   // Write KV at most every 3 minutes unless the status changed
   kvWriteCooldownMinutes: 3,
   // Enable HTTP Basic auth for status page & API by uncommenting the line below, format `<USERNAME>:<PASSWORD>`
-  // passwordProtection: 'username:password',
-  // Define all your monitors here
   monitors: [
     {
       id: 'balance_api',
@@ -26,7 +23,6 @@ const workerConfig = {
       statusPageLink: 'https://my.captchasonic.com',
       expectedCodes: [200, 400],
       timeout: 20000,
-      checkLocationWorkerRoute : "https://br.status.captchasonic.com"
     },
     {
       id: 'solver_api',
@@ -44,7 +40,6 @@ const workerConfig = {
           "queries": []
           }
       },
-      checkLocationWorkerRoute : "https://br.status.captchasonic.com"
     },
     {
       id: 'demo',
@@ -55,7 +50,6 @@ const workerConfig = {
       statusPageLink: 'https://swapi.py4e.com/api/people/?page=2',
       expectedCodes: [200],
       timeout: 20000,
-      checkLocationWorkerRoute : "https://br.status.captchasonic.com"
     },
   ],
   // notification: {
