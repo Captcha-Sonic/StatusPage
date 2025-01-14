@@ -3,9 +3,10 @@ const pageConfig = {
   title: "lyc8503's Status Page",
   // Links shown at the header of your status page, could set `highlight` to `true`
   links: [
-    { link: 'https://github.com/lyc8503', label: 'GitHub' },
-    { link: 'https://blog.lyc8503.net/', label: 'Blog' },
-    { link: 'mailto:me@lyc8503.net', label: 'Email Me', highlight: true },
+    { link: 'https://my.captchasonic.com', label: 'Dashboard' },
+    { link: 'https://captchasonic.com', label: 'Homepage' },
+    { link: 'https://github.com/orgs/Captcha-Sonic/repositories', label: 'Github' },
+    { link: 'mailto:github@captchasonic.com', label: 'Email Me', highlight: true },
   ],
 }
 
@@ -18,62 +19,37 @@ const workerConfig = {
   monitors: [
     // Example HTTP Monitor
     {
-      // `id` should be unique, history will be kept if the `id` remains constant
-      id: 'foo_monitor',
-      // `name` is used at status page and callback message
-      name: 'My API Monitor',
-      // `method` should be a valid HTTP Method
+      id: 'solver_api',
+      name: 'solver_api',
       method: 'POST',
-      // `target` is a valid URL
-      target: 'https://example.com',
-      // [OPTIONAL] `tooltip` is ONLY used at status page to show a tooltip
-      tooltip: 'This is a tooltip for this monitor',
-      // [OPTIONAL] `statusPageLink` is ONLY used for clickable link at status page
-      statusPageLink: 'https://example.com',
-      // [OPTIONAL] `expectedCodes` is an array of acceptable HTTP response codes, if not specified, default to 2xx
+      target: 'https://api.captchasonic.com',
+      tooltip: 'This is main SolutionsAPI of captchasonic service',
+      statusPageLink: 'https://my.captchasonic.com',
       expectedCodes: [200],
-      // [OPTIONAL] `timeout` in millisecond, if not specified, default to 10000
       timeout: 10000,
-      // [OPTIONAL] headers to be sent
       headers: {
         'User-Agent': 'Uptimeflare',
         Authorization: 'Bearer YOUR_TOKEN_HERE',
       },
-      // [OPTIONAL] body to be sent
       body: 'Hello, world!',
-      // [OPTIONAL] if specified, the response must contains the keyword to be considered as operational.
       responseKeyword: 'success',
-      // [OPTIONAL] if specified, the check will run in your specified region,
-      // refer to docs https://github.com/lyc8503/UptimeFlare/wiki/Geo-specific-checks-setup before setting this value
-      checkLocationWorkerRoute: 'https://xxx.example.com',
-    },
-    // Example TCP Monitor
-    {
-      id: 'test_tcp_monitor',
-      name: 'Example TCP Monitor',
-      // `method` should be `TCP_PING` for tcp monitors
-      method: 'TCP_PING',
-      // `target` should be `host:port` for tcp monitors
-      target: '1.2.3.4:22',
-      tooltip: 'My production server SSH',
-      statusPageLink: 'https://example.com',
-      timeout: 5000,
+      // checkLocationWorkerRoute: 'https://xxx.example.com',
     },
   ],
-  notification: {
-    // [Optional] apprise API server URL
-    // if not specified, no notification will be sent
-    appriseApiServer: "https://apprise.example.com/notify",
-    // [Optional] recipient URL for apprise, refer to https://github.com/caronc/apprise
-    // if not specified, no notification will be sent
-    recipientUrl: "tgram://bottoken/ChatID",
-    // [Optional] timezone used in notification messages, default to "Etc/GMT"
-    timeZone: "Asia/Shanghai",
-    // [Optional] grace period in minutes before sending a notification
-    // notification will be sent only if the monitor is down for N continuous checks after the initial failure
-    // if not specified, notification will be sent immediately
-    gracePeriod: 5,
-  },
+  // notification: {
+  //   // [Optional] apprise API server URL
+  //   // if not specified, no notification will be sent
+  //   appriseApiServer: "https://apprise.example.com/notify",
+  //   // [Optional] recipient URL for apprise, refer to https://github.com/caronc/apprise
+  //   // if not specified, no notification will be sent
+  //   recipientUrl: "tgram://bottoken/ChatID",
+  //   // [Optional] timezone used in notification messages, default to "Etc/GMT"
+  //   timeZone: "Asia/Shanghai",
+  //   // [Optional] grace period in minutes before sending a notification
+  //   // notification will be sent only if the monitor is down for N continuous checks after the initial failure
+  //   // if not specified, notification will be sent immediately
+  //   gracePeriod: 5,
+  // },
   callbacks: {
     onStatusChange: async (
       env: any,
